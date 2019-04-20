@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="../common/css/base.css" rel="stylesheet">
+<link href="adb.css" rel="stylesheet">
+<script type="text/javascript" src="../common/js/base.js"></script>
+<script type="text/javascript" src="../common/js/pic.js"></script>
+<script type="text/javascript" src="./adb_caller.js"></script>
+<script type="text/javascript" src="./adb_page.js"></script>
+<title>adb page</title>
+</head>
+<body>
+ <div class='row' id="panel_${dev}"><div>
+   <button class="fresh-dev" onclick='fresh("${dev}")'>点击刷新图片</button>
+   <div>device id : ${dev}</div>
+   <ol class="root_loop"><ol>
+   <div class="row"><button>点击</button><button>滑动</button><button>循环</button><button>删除最后</button></div>
+  </div><img src="../common/img/loading.gif" width="35%">
+</body>
+</html>

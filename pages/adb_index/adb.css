@@ -1,0 +1,5 @@
+.row[id^="panel_"]>div {
+ width: 60%;
+ vertical-align: top;
+ padding: 10px;
+}

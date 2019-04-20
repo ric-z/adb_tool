@@ -1,0 +1,12 @@
+{
+  "name": "adbtool",
+  "version": "0.1.0",
+  "main": "main.js",
+  "icon": "favicon.ico",
+  "webkit": {
+    "page-cache": false
+  },
+  "dependencies": {
+    "node-adb": "^0.1.6"
+  }
+}

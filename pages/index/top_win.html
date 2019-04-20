@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="../common/css/base.css" rel="stylesheet">
+<link href="top_win.css" rel="stylesheet">
+<script type="text/javascript" src="../common/js/base.js"></script>
+<title>主页面</title>
+</head>
+<body>
+ <div id="navPanel">
+  <div class="nav-left">
+   <div class="sheet"></div>
+  </div>
+  <div class="nav-right">
+   <div><img src="../common/img/close.png" class="click" draggable="false" onclick='main.closeCurrent()' title="关闭当前页" /></div>
+   <div><img src="../common/img/debug.png" class="click" draggable="false" onclick="base.select('.active webview')[0].openDevTools()" title="调试"></div>
+  </div>
+  <div class="user-img">
+   <img src="../common/img/set.png" class="click" draggable="false" onclick="openSet()" title="设置">
+  </div>
+  <div class="sys-img">
+   <img src="../common/img/unfold.png" class="click" draggable="false" onclick="minsize()" title="最小化">
+   <img src="../common/img/fullscreen.png" class="click" draggable="false" onclick="full(this)" title="全屏/恢复">
+   <img src="../common/img/sys-close.png" style="border-radius: 0 0 0 200px;" class="click" draggable="false" onclick="exit()" title="退出">
+  </div>
+ </div>
+ <div id="mainPanel" class="child-center">
+  <div id="board" class="center" relative="height=-35px width=-10px" title="请耐心等待，正在努力加载。。。"><img relative="height=parent" src="../common/img/loading.gif"></div>
+ </div>
+ <div id="msgPanel" class="center"></div>
+</body>
+<script type="text/javascript" src="top_win.js"></script>
+<script type="text/javascript">
+ let utils = require("../common/js/utils.js");
+ function exit() {
+   window.close();
+ }
+ 
+ function minsize() {
+   const win = require('electron').remote.getCurrentWindow();
+   win.minimize();
+ }
+ 
+ function full(img) {
+   const win = require('electron').remote.getCurrentWindow();
+   win.setMaximizable(true);
+   if (win.isMaximized()) {
+    win.unmaximize();
+    img.setAttribute("src", "../common/img/fullscreen.png");
+   } else {
+    win.maximize();
+    img.setAttribute("src", "../common/img/exit-fullscreen.png");
+   }
+ }
+
+ function showMsg(msg) {
+   var msgPanel = base.select("#msgPanel")[0];
+   msgPanel.style.display = "";
+   let lis = base.select("div", msgPanel);
+   if (lis.length > 0) {
+    lis[0].remove();
+   }
+   let msgDoc = document.createElement("DIV");
+   msgDoc.innerHTML = `<span>[${new Date().toLocaleTimeString()}]　　　</span><span>${msg}</span>`;
+   msgPanel.appendChild(msgDoc);
+   if (window.msg_t) {clearTimeout(window.msg_t)};
+   window.msg_t = setTimeout(() => {msgPanel.style.display="none"}, 8000);
+ }
+
+ function openSet() {
+  main.showOrOpen({id:'sys-set',title:'系统设置',url:'../setting/set.html',node:true,menu:[{title:'保存',icon:'../common/img/save.png',js:'save()',key:'S'}]});
+ }
+
+ base.initDom();
+ window.onresize = base.initDom;
+ 
+ main.open({url:'../adb_index/adb.html',node:true});
+
+</script>
+</html>

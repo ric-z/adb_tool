@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="../common/css/base.css" rel="stylesheet">
+<link href="set.css" rel="stylesheet">
+<script type="text/javascript" src="../common/js/base.js"></script>
+<title>系统设置</title>
+</head>
+<body>
+ <div class="setter center">
+    <div class="setter-title center">存储</div>
+    <div class="setter-item">
+        <label title="Adb 路径"><i>?</i>Adb 路径:</label>
+        <input placeholder="点击选择 adb 的可执行文件" type="text" name="adb_path" contenteditable="false" onclick="setAdbPath()"/>
+    </div>
+ </div>
+</body>
+<script type="text/javascript">
+let utils = require("../common/js/utils.js");
+let adb_set = utils.getStorage({name:"set-adb"}) || {};
+base.freshNams(adb_set);
+
+function setAdbPath() {
+  let path = choiceFile();
+  if (!path) {return;}
+  adb_set.adb_path = path;
+  base.freshNams({adb_path:adb_set.adb_path});
+}
+
+
+function save() {
+  utils.setStorage({name:"set-adb", value:adb_set});
+  // 保存成功
+  showMsg("保存成功，请按 F4 重启软件以便应用新的设置。");
+}
+</script>
+</html>

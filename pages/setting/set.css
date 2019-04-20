@@ -1,0 +1,58 @@
+body {
+ background-color: white;
+}
+
+.setter {
+ margin-top: 30px;
+ border: 1px dotted #3e3c52;
+ padding: 5px;
+ border-radius: 5px;
+ min-width: 600px;
+ width: 90%;
+}
+
+.setter-title {
+ margin-top: -15px;
+ background-color: white;
+ padding: 0 10px;
+ width: 50px;
+ text-align: center;
+ color: rgba(43, 28, 28, 0.8);
+}
+
+.setter-item {
+ padding: 5px 10px;
+}
+
+.setter-item>label {
+ font-size: small;
+ margin-right: 10px;
+ display: inline-block;
+ width: 80px;
+ text-align: right;
+}
+
+.setter-item>label>i {
+ font-size: 10px;
+ margin: 2px;
+ color: #ff4900;
+}
+
+.setter-item>input {
+ border: none;
+ border-bottom: 1px solid black;
+ padding: 2px 5px;
+ font-size: large;
+ color: #5b03ff;
+ width: 80%;
+}
+
+hr {
+ margin: 20px 5px 10px 5px;
+}
+
+img.click {
+ width: 30px;
+ height: 25px;
+ display: block;
+}
